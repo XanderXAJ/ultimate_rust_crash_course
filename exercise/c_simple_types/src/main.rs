@@ -5,6 +5,7 @@ use ding_machine::ding;
 use ding_machine::on_off;
 use ding_machine::print_array;
 use ding_machine::print_difference;
+use ding_machine::print_distance;
 
 fn main() {
     let coords: (f32, f32) = (6.3, 15.0);
@@ -53,5 +54,5 @@ fn main() {
     // output. Then go refactor the print_distance() function according to the
     // instructions in the comments inside that function.
 
-    // print_distance(coords);
+    print_distance(coords);
 }
