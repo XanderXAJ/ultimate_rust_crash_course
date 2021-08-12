@@ -28,11 +28,11 @@ fn main() {
     // Hint 1: use `.starts_with("b")` and `.contains("a")`
     // Hint 2: `&&` is the boolean "AND" operator
     //
-    //if eat(arg) {
-    //    println!("Might be bananas");
-    //} else {
-    //    println!("Not bananas");
-    //}
+    if eat(arg) {
+       println!("Might be bananas");
+    } else {
+       println!("Not bananas");
+    }
 
     // Try running this program with "boat", "banana", and "grapes" as the arguments :-)
 
@@ -54,4 +54,8 @@ fn change(subject: &mut String) {
     if !subject.ends_with("s") {
         subject.push_str("s")
     }
+}
+
+fn eat(subject: String) -> bool {
+    subject.starts_with("b") && subject.contains("a")
 }
