@@ -44,7 +44,19 @@ fn main() {
     //      - Less than 1.0 -- `Shot::Bullseye`
     //      - Between 1.0 and 5.0 -- `Shot::Hit(value)`
     //      - Greater than 5.0 -- `Shot::Miss`
+    for coord in arrow_coords {
+        coord.print_description();
 
+        let distance = coord.distance_from_center();
+        let shot = if distance < 1.0 {
+            Shot::Bullseye
+        } else if distance < 5.0 {
+            Shot::Hit(distance)
+        } else {
+            Shot::Miss
+        };
+        shots.push(shot)
+    }
 
     let mut total = 0;
     // 3. Finally, loop through each shot in shots and add its points to total
