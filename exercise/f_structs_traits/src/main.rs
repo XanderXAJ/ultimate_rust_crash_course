@@ -49,8 +49,8 @@ fn main() {
     // Hint: Define the generic type between the function name and open paren:
     //       fn function_name<T: Bite>(...)
     //
-    //bunny_nibbles(&mut carrot);
-    //println!("Bunny nibbles for awhile: {:?}", carrot);
+    bunny_nibbles(&mut carrot);
+    println!("Bunny nibbles for awhile: {:?}", carrot);
 }
 
 #[derive(Debug)] // This enables using the debugging format string "{:?}"
@@ -62,5 +62,11 @@ impl Bite for Carrot {
     fn bite(self: &mut Self) {
         // Eat 20% of the remaining carrot. It may take awhile to eat it all...
         self.percent_left *= 0.8;
+    }
+}
+
+fn bunny_nibbles<T: Bite>(nommable: &mut T) {
+    for _i in 0..3 {
+        nommable.bite()
     }
 }
