@@ -51,6 +51,10 @@ fn double() {
     // by 2) until `x` is larger than 500.  Increment `count` each time through the loop. Run it
     // with `cargo run double`  Hint: The answer is 9 times.
 
+    while x < 500 {
+        count = count + 1;
+        x = x * 2;
+    }
 
     println!("You can double x {} times until x is larger than 500", count);
 }
