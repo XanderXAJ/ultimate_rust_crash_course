@@ -40,14 +40,15 @@ fn main() {
     match subcommand.as_str() {
         // EXAMPLE FOR CONVERSION OPERATIONS
         "blur" => {
-            if args.len() != 2 {
+            if args.len() != 3 {
                 print_usage_and_exit();
             }
             let infile = args.remove(0);
             let outfile = args.remove(0);
+            let sigma: f32 = args.remove(0).parse().unwrap();
             // **OPTION**
             // Improve the blur implementation -- see the blur() function below
-            blur(infile, outfile);
+            blur(infile, outfile, sigma);
         }
 
         // **OPTION**
@@ -86,20 +87,20 @@ fn main() {
 
 fn print_usage_and_exit() {
     println!("USAGE (when in doubt, use a .png extension on your filenames)");
-    println!("blur INFILE OUTFILE");
+    println!("blur INFILE OUTFILE SIGMA");
     // **OPTION**
     // Print useful information about what subcommands and arguments you can use
     // println!("...");
     std::process::exit(-1);
 }
 
-fn blur(infile: String, outfile: String) {
+fn blur(infile: String, outfile: String, sigma: f32) {
     // Here's how you open an existing image file
     let img = image::open(infile).expect("Failed to open INFILE.");
     // **OPTION**
     // Parse the blur amount (an f32) from the command-line and pass it through
     // to this function, instead of hard-coding it to 2.0.
-    let img2 = img.blur(2.0);
+    let img2 = img.blur(sigma);
     // Here's how you save an image to a file.
     img2.save(outfile).expect("Failed writing OUTFILE.");
 }
